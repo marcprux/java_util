@@ -1,16 +1,27 @@
-//
-//  Package.swift
-//  SwiftJava
-//
-//  Created by John Holdsworth on 20/07/2016.
-//  Copyright (c) 2016 John Holdsworth. All rights reserved.
-//
-
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
     name: "java_util",
+    products: [
+        .library(
+            name: "java_util",
+            targets: ["java_util"]
+        ),
+    ],
     dependencies: [
-        .Package(url: "https://github.com/SwiftJava/java_lang.git", versions: Version(2,1,0)..<Version(3,0,0)),
-        ]
+        .package(
+            url: "https://github.com/PureSwift/java_lang.git",
+            .branch("master")
+        ),
+    ],
+    targets: [
+        .target(
+            name: "java_util",
+            dependencies: [
+                "java_lang",
+            ],
+            path: "./Sources"
+        )
+    ]
 )
