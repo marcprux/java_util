@@ -10,11 +10,11 @@ public protocol Condition: JavaProtocol {
 
     /// public abstract boolean java.util.concurrent.locks.Condition.await(long,java.util.concurrent.TimeUnit) throws java.lang.InterruptedException
 
-    func await( time: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool
+    func java_await( time: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool
 
     /// public abstract void java.util.concurrent.locks.Condition.await() throws java.lang.InterruptedException
 
-    func await() throws /* java.lang.InterruptedException */
+    func java_await() throws /* java.lang.InterruptedException */
 
     /// public abstract long java.util.concurrent.locks.Condition.awaitNanos(long) throws java.lang.InterruptedException
 
@@ -47,7 +47,7 @@ open class ConditionForward: JNIObjectForward, Condition {
 
     private static var await_MethodID_8: jmethodID?
 
-    open func await( time: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
+    open func java_await( time: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 2 )
         __args[0] = jvalue( j: time )
@@ -60,15 +60,15 @@ open class ConditionForward: JNIObjectForward, Condition {
         return __return != jboolean(JNI_FALSE)
     }
 
-    open func await( _ _time: Int64, _ _unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
-        return try await( time: _time, unit: _unit )
+    open func java_await( _ _time: Int64, _ _unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
+        return try java_await( time: _time, unit: _unit )
     }
 
     /// public abstract void java.util.concurrent.locks.Condition.await() throws java.lang.InterruptedException
 
     private static var await_MethodID_9: jmethodID?
 
-    open func await() throws /* java.lang.InterruptedException */ {
+    open func java_await() throws /* java.lang.InterruptedException */ {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
         JNIMethod.CallVoidMethod( object: javaObject, methodName: "await", methodSig: "()V", methodCache: &ConditionForward.await_MethodID_9, args: &__args, locals: &__locals )

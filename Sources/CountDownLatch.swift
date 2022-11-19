@@ -40,7 +40,7 @@ open class CountDownLatch: java_swift.JavaObject {
 
     private static var await_MethodID_2: jmethodID?
 
-    open func await( timeout: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
+    open func java_await( timeout: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 2 )
         __args[0] = jvalue( j: timeout )
@@ -53,15 +53,15 @@ open class CountDownLatch: java_swift.JavaObject {
         return __return != jboolean(JNI_FALSE)
     }
 
-    open func await( _ _timeout: Int64, _ _unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
-        return try await( timeout: _timeout, unit: _unit )
+    open func java_await( _ _timeout: Int64, _ _unit: TimeUnit? ) throws /* java.lang.InterruptedException */ -> Bool {
+        return try java_await( timeout: _timeout, unit: _unit )
     }
 
     /// public void java.util.concurrent.CountDownLatch.await() throws java.lang.InterruptedException
 
     private static var await_MethodID_3: jmethodID?
 
-    open func await() throws /* java.lang.InterruptedException */ {
+    open func java_await() throws /* java.lang.InterruptedException */ {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
         JNIMethod.CallVoidMethod( object: javaObject, methodName: "await", methodSig: "()V", methodCache: &CountDownLatch.await_MethodID_3, args: &__args, locals: &__locals )

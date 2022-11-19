@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
@@ -12,7 +12,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/PureSwift/java_lang.git",
-            .branch("master")
+            branch: "master"
         ),
     ],
     targets: [

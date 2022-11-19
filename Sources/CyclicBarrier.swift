@@ -68,7 +68,7 @@ open class CyclicBarrier: java_swift.JavaObject {
 
     private static var await_MethodID_3: jmethodID?
 
-    open func await( timeout: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException, java.util.concurrent.TimeoutException */ -> Int {
+    open func java_await( timeout: Int64, unit: TimeUnit? ) throws /* java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException, java.util.concurrent.TimeoutException */ -> Int {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 2 )
         __args[0] = jvalue( j: timeout )
@@ -81,15 +81,15 @@ open class CyclicBarrier: java_swift.JavaObject {
         return Int(__return)
     }
 
-    open func await( _ _timeout: Int64, _ _unit: TimeUnit? ) throws /* java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException, java.util.concurrent.TimeoutException */ -> Int {
-        return try await( timeout: _timeout, unit: _unit )
+    open func java_await( _ _timeout: Int64, _ _unit: TimeUnit? ) throws /* java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException, java.util.concurrent.TimeoutException */ -> Int {
+        return try java_await( timeout: _timeout, unit: _unit )
     }
 
     /// public int java.util.concurrent.CyclicBarrier.await() throws java.lang.InterruptedException,java.util.concurrent.BrokenBarrierException
 
     private static var await_MethodID_4: jmethodID?
 
-    open func await() throws /* java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException */ -> Int {
+    open func java_await() throws /* java.lang.InterruptedException, java.util.concurrent.BrokenBarrierException */ -> Int {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
         let __return = JNIMethod.CallIntMethod( object: javaObject, methodName: "await", methodSig: "()I", methodCache: &CyclicBarrier.await_MethodID_4, args: &__args, locals: &__locals )
