@@ -1,5 +1,9 @@
 #if canImport(Glibc)
 import Glibc
+#elseif canImport(Darwin)
+import Darwin
+#elseif canImport(Android)
+import Android
 #endif
 import java_swift
 
